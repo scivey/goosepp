@@ -14,12 +14,20 @@ namespace scivey {
 namespace goosepp {
 
 
-class NodeScorer {
+class NodeScorerIf {
+public:
+    virtual int getNodeScore(const GumboNode *node) = 0;
+    virtual void process() = 0;
+    virtual const GumboNode* getTopNode() = 0;
+    virtual int getTopNodeScore() = 0;
+};
+
+class NodeScorer: public NodeScorerIf {
 protected:
     const GumboNode *root_;
-    std::shared_ptr<TextNodeCollector> collector_;
-    std::shared_ptr<BoostCheckerFactory> checkerFactory_;
-    std::shared_ptr<stopwords::StopwordCounter> stopwordCounter_;
+    std::shared_ptr<TextNodeCollectorIf> collector_;
+    std::shared_ptr<BoostCheckerFactoryIf> checkerFactory_;
+    std::shared_ptr<stopwords::StopwordCounterIf> stopwordCounter_;
 
     std::map<const GumboNode*, int> nodeScores_;
     std::map<const GumboNode*, size_t> nodeCounts_;
@@ -32,15 +40,15 @@ protected:
     void updateTextyNode(const GumboNode *node, int boostScore);
     bool isOkToBoost(const GumboNode *node);
 public:
-    NodeScorer(std::shared_ptr<StopwordCounter>,
-        std::shared_ptr<TextNodeCollector>,
-        std::shared_ptr<BoostCheckerFactory>,
+    NodeScorer(std::shared_ptr<StopwordCounterIf>,
+        std::shared_ptr<TextNodeCollectorIf>,
+        std::shared_ptr<BoostCheckerFactoryIf>,
         const GumboNode *root);
 
-    int getNodeScore(const GumboNode *node);
-    void process();
-    const GumboNode* getTopNode();
-    int getTopNodeScore();
+    int getNodeScore(const GumboNode *node) override;
+    void process() override;
+    const GumboNode* getTopNode() override;
+    int getTopNodeScore() override;
 };
 
 } // goosepp

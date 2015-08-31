@@ -11,14 +11,9 @@ using namespace std;
 namespace scivey {
 namespace goosepp {
 
-    // ContentExtractor(std::shared_ptr<NodeScorer>,
-    //     std::shared_ptr<NodeTextCleaner>,
-    //     std::shared_ptr<stopwords::StopwordCoutner>,
-    //     const GumboNode *root);
-
-ContentExtractor::ContentExtractor(std::shared_ptr<NodeScorer> scorer,
-                                    std::shared_ptr<NodeTextCleaner> cleaner,
-                                    std::shared_ptr<stopwords::StopwordCounter> counter,
+ContentExtractor::ContentExtractor(std::shared_ptr<NodeScorerIf> scorer,
+                                    std::shared_ptr<NodeTextCleanerIf> cleaner,
+                                    std::shared_ptr<stopwords::StopwordCounterIf> counter,
                                     const GumboNode *root)
     : scorer_(scorer),
       cleaner_(cleaner),

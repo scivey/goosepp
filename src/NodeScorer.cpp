@@ -19,9 +19,9 @@ namespace goosepp {
 
 using stopwords::StopwordCounter;
 
-NodeScorer::NodeScorer(shared_ptr<StopwordCounter> counter,
-                        shared_ptr<TextNodeCollector> collector,
-                        shared_ptr<BoostCheckerFactory> checkerFactory,
+NodeScorer::NodeScorer(shared_ptr<StopwordCounterIf> counter,
+                        shared_ptr<TextNodeCollectorIf> collector,
+                        shared_ptr<BoostCheckerFactoryIf> checkerFactory,
                         const GumboNode *root)
     : stopwordCounter_(counter),
       collector_(collector),

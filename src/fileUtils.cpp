@@ -19,6 +19,9 @@ string readFile(const char *filePath) {
     }
     return oss.str();
 }
+string readFile(const string &filePath) {
+    return readFile(filePath.c_str());
+}
 
 } // goosepp
 } // scivey

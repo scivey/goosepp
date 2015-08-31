@@ -8,7 +8,12 @@
 namespace scivey {
 namespace goosepp {
 
-class TextNodeCollector {
+class TextNodeCollectorIf {
+public:
+    virtual std::vector<const GumboNode*> collect(const GumboNode *root) = 0;
+};
+
+class TextNodeCollector: public TextNodeCollectorIf {
 protected:
     std::set<GumboTag> topNodeTags_ {
         GUMBO_TAG_P,
@@ -17,7 +22,7 @@ protected:
     };
 public:
     TextNodeCollector();
-    std::vector<const GumboNode*> collect(const GumboNode *root);
+    std::vector<const GumboNode*> collect(const GumboNode *root) override;
 };
 
 } // goosepp

@@ -16,12 +16,12 @@ namespace goosepp {
 string extractBody(const string &htmlText) {
     auto gumboed = gumbo_parse(htmlText.c_str());
     auto stopwordCounter = stopwords::getEnglishStopwordCounterPtr();
-    auto cleaner = make_shared<NodeTextCleaner>();
-    auto checkerFactory = make_shared<BoostCheckerFactory>(
+    shared_ptr<NodeTextCleanerIf> cleaner = make_shared<NodeTextCleaner>();
+    shared_ptr<BoostCheckerFactoryIf> checkerFactory = make_shared<BoostCheckerFactory>(
         cleaner, stopwordCounter
     );
-    auto collector = make_shared<TextNodeCollector>();
-    auto scorer = make_shared<NodeScorer>(
+    shared_ptr<TextNodeCollectorIf> collector = make_shared<TextNodeCollector>();
+    shared_ptr<NodeScorerIf> scorer = make_shared<NodeScorer>(
         stopwordCounter, collector, checkerFactory, gumboed->root
     );
     ContentExtractor extractor(

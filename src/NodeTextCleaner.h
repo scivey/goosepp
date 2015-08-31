@@ -15,7 +15,12 @@ namespace detail {
     std::regex getBadClassesRegex();
 }
 
-class NodeTextCleaner {
+class NodeTextCleanerIf {
+public:
+    virtual std::string getText(const GumboNode *node) = 0;
+};
+
+class NodeTextCleaner: public NodeTextCleanerIf {
 protected:
     std::regex badClasses_;
     std::set<GumboTag> badTagTypes_ {
@@ -26,7 +31,7 @@ protected:
 
 public:
     NodeTextCleaner();
-    std::string getText(const GumboNode *node);
+    std::string getText(const GumboNode *node) override;
 };
 
 } // goosepp

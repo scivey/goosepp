@@ -15,32 +15,42 @@
 namespace scivey {
 namespace goosepp {
 
-using stopwords::StopwordCounter;
+using stopwords::StopwordCounterIf;
 
-class BoostChecker {
-    std::shared_ptr<NodeTextCleaner> cleaner_;
-    std::shared_ptr<StopwordCounter> stopwordCounter_;
-    size_t minStopwords_;
-    size_t maxStepsAway_;
+class BoostCheckerIf {
 public:
-    BoostChecker(std::shared_ptr<NodeTextCleaner> cleaner,
-        std::shared_ptr<StopwordCounter> counter,
-        size_t minStopwords = 5,
-        size_t maxStepsAway = 3);
-    bool isOkToBoost(const GumboNode *node);
+    virtual bool isOkToBoost(const GumboNode *node) = 0;
 };
 
-class BoostCheckerFactory {
-    std::shared_ptr<NodeTextCleaner> cleaner_;
-    std::shared_ptr<StopwordCounter> stopwordCounter_;
+class BoostChecker: public BoostCheckerIf {
+    std::shared_ptr<NodeTextCleanerIf> cleaner_;
+    std::shared_ptr<StopwordCounterIf> stopwordCounter_;
     size_t minStopwords_;
     size_t maxStepsAway_;
 public:
-    BoostCheckerFactory(std::shared_ptr<NodeTextCleaner> cleaner,
-        std::shared_ptr<StopwordCounter> counter,
+    BoostChecker(std::shared_ptr<NodeTextCleanerIf> cleaner,
+        std::shared_ptr<StopwordCounterIf> counter,
         size_t minStopwords = 5,
         size_t maxStepsAway = 3);
-    BoostChecker build();
+    bool isOkToBoost(const GumboNode *node) override;
+};
+
+class BoostCheckerFactoryIf {
+public:
+    virtual BoostChecker build() = 0;
+};
+
+class BoostCheckerFactory: public BoostCheckerFactoryIf {
+    std::shared_ptr<NodeTextCleanerIf> cleaner_;
+    std::shared_ptr<StopwordCounterIf> stopwordCounter_;
+    size_t minStopwords_;
+    size_t maxStepsAway_;
+public:
+    BoostCheckerFactory(std::shared_ptr<NodeTextCleanerIf> cleaner,
+        std::shared_ptr<StopwordCounterIf> counter,
+        size_t minStopwords = 5,
+        size_t maxStepsAway = 3);
+    BoostChecker build() override;
 };
 
 } // goosepp

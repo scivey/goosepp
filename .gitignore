@@ -5,3 +5,5 @@ a.out
 *.log
 tmp
 runner
+unit_test_runner
+func_test_runner

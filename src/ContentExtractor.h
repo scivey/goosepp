@@ -11,18 +11,23 @@
 namespace scivey {
 namespace goosepp {
 
-class ContentExtractor {
+class ContentExtractorIf {
+public:
+    virtual std::string extract() = 0;
+};
+
+class ContentExtractor: public ContentExtractorIf {
 protected:
-    std::shared_ptr<NodeScorer> scorer_;
-    std::shared_ptr<NodeTextCleaner> cleaner_;
-    std::shared_ptr<stopwords::StopwordCounter> stopwordCounter_;
+    std::shared_ptr<NodeScorerIf> scorer_;
+    std::shared_ptr<NodeTextCleanerIf> cleaner_;
+    std::shared_ptr<stopwords::StopwordCounterIf> stopwordCounter_;
     const GumboNode *root_;
 public:
-    ContentExtractor(std::shared_ptr<NodeScorer>,
-        std::shared_ptr<NodeTextCleaner>,
-        std::shared_ptr<stopwords::StopwordCounter>,
+    ContentExtractor(std::shared_ptr<NodeScorerIf>,
+        std::shared_ptr<NodeTextCleanerIf>,
+        std::shared_ptr<stopwords::StopwordCounterIf>,
         const GumboNode *root);
-    std::string extract();
+    std::string extract() override;
 };
 
 

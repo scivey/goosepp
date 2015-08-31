@@ -18,8 +18,8 @@ namespace goosepp {
 
 using stopwords::StopwordCounter;
 
-BoostChecker::BoostChecker(shared_ptr<NodeTextCleaner> cleaner,
-                            shared_ptr<StopwordCounter> counter,
+BoostChecker::BoostChecker(shared_ptr<NodeTextCleanerIf> cleaner,
+                            shared_ptr<StopwordCounterIf> counter,
                             size_t minStopwords,
                             size_t maxStepsAway)
     : stopwordCounter_(counter),
@@ -54,8 +54,8 @@ bool BoostChecker::isOkToBoost(const GumboNode *node) {
 }
 
 
-BoostCheckerFactory::BoostCheckerFactory(shared_ptr<NodeTextCleaner> cleaner,
-                            shared_ptr<StopwordCounter> counter,
+BoostCheckerFactory::BoostCheckerFactory(shared_ptr<NodeTextCleanerIf> cleaner,
+                            shared_ptr<StopwordCounterIf> counter,
                             size_t minStopwords,
                             size_t maxStepsAway)
     : stopwordCounter_(counter),
