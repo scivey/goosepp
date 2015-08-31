@@ -11,6 +11,8 @@ It has two dependencies:
 #include <string>
 #include <goosepp/goosepp.h>
 using std::string;
+using std::cout;
+using std::endl;
 using scivey::goosepp::extractBody;
 
 string getHtmlSomehow();
