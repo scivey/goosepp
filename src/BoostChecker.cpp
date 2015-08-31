@@ -27,14 +27,15 @@ BoostChecker::BoostChecker(shared_ptr<NodeTextCleanerIf> cleaner,
       minStopwords_(minStopwords),
       maxStepsAway_(maxStepsAway) {}
 
-bool BoostChecker::isOkToBoost(const GumboNode *node) {
+bool BoostChecker::shouldBoost(const GumboNode *node) {
     bool isOk = false;
     size_t stepsAway = 0;
 
     auto visitor = [&isOk, &stepsAway, this](const GumboNode* sibling, function<void()> escape) {
         if (sibling->type == GUMBO_NODE_ELEMENT && sibling->v.element.tag == GUMBO_TAG_P) {
             if (stepsAway >= this->maxStepsAway_) {
-                VLOG(4) << "next paragraph is too far away; boosting";
+                VLOG(4) << "next paragraph is too far away; not boosting";
+
                 isOk = false;
                 escape();
                 return;

@@ -73,9 +73,9 @@ int NodeScorer::getTopNodeScore() {
     return topNodeScore_;
 }
 
-bool NodeScorer::isOkToBoost(const GumboNode *node) {
+bool NodeScorer::shouldBoost(const GumboNode *node) {
     auto checker = checkerFactory_->build();
-    return checker.isOkToBoost(node);
+    return checker.shouldBoost(node);
 }
 
 
@@ -98,7 +98,7 @@ void NodeScorer::process() {
 
     for (auto node: nodesWithText) {
         double boostScore = 0;
-        if (isOkToBoost(node)) {
+        if (shouldBoost(node)) {
             boostScore = ((1.0 / startingBoost) * 50);
             startingBoost += 1.0;
         }

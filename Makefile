@@ -22,6 +22,7 @@ LIB_OBJ = $(addprefix ./src/, \
 
 UNIT_TEST_OBJ = $(addprefix ./src/test/unit/, \
 		test_BoostChecker.o \
+		test_WhitespaceTokenizer.o \
 	)
 
 ./src/main.cpp: $(LIB_OBJ)

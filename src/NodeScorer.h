@@ -38,7 +38,7 @@ protected:
     void updateNodeScore(const GumboNode *node, int score);
     void incrNodeCount(const GumboNode *node);
     void updateTextyNode(const GumboNode *node, int boostScore);
-    bool isOkToBoost(const GumboNode *node);
+    bool shouldBoost(const GumboNode *node);
 public:
     NodeScorer(std::shared_ptr<StopwordCounterIf>,
         std::shared_ptr<TextNodeCollectorIf>,

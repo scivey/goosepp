@@ -168,7 +168,7 @@ void walkSiblings(const GumboNode *node, function<void (const GumboNode*, functi
     auto escapeFunc = [&keepGoing]() {
         keepGoing = false;
     };
-    const GumboVector *children = &node->v.element.children;
+    const GumboVector *children = &node->parent->v.element.children;
     for (size_t i = 0; i < children->length; ++i) {
         if (!keepGoing) {
             break;

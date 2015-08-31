@@ -19,7 +19,7 @@ using stopwords::StopwordCounterIf;
 
 class BoostCheckerIf {
 public:
-    virtual bool isOkToBoost(const GumboNode *node) = 0;
+    virtual bool shouldBoost(const GumboNode *node) = 0;
 };
 
 class BoostChecker: public BoostCheckerIf {
@@ -32,7 +32,7 @@ public:
         std::shared_ptr<StopwordCounterIf> counter,
         size_t minStopwords = 5,
         size_t maxStepsAway = 3);
-    bool isOkToBoost(const GumboNode *node) override;
+    bool shouldBoost(const GumboNode *node) override;
 };
 
 class BoostCheckerFactoryIf {

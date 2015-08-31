@@ -14,7 +14,6 @@ TextNodeCollector::TextNodeCollector(){};
 vector<const GumboNode*> TextNodeCollector::collect(const GumboNode *root) {
     vector<const GumboNode*> nodesWithText;
     auto stopwordCounter = stopwords::getEnglishStopwordCounter();
-    // auto nodesToCheck = collectTags(topNodeTags_, root);
     for (auto nodePtr: collectTags(topNodeTags_, root)) {
         string nodeText = cleanText(nodePtr);
         if (!isHighLinkDensity(nodePtr, nodeText) && stopwordCounter.countStopwords(nodeText) > 2) {
