@@ -1,11 +1,11 @@
-#pragma once
 #include <string>
 
 namespace scivey {
 namespace goosepp {
+namespace stopwords {
 
-std::string extractBody(const std::string &htmlStr);
+bool isEnglishStopword(const std::string&);
 
+} // stopwords
 } // goosepp
 } // scivey
-

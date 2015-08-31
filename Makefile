@@ -6,11 +6,15 @@ COMP = $(CXX) $(CXXFLAGS)
 
 LIB_OBJ = $(addprefix ./src/, \
 		fileUtils.o \
-		gooseFuncs.o \
+		ContentExtractor.o \
+		NodeTextCleaner.o \
+		TextNodeCollector.o \
+		NodeScorer.o \
 		gumboUtils.o \
-		stopwords.o \
-		stopwordSet.o \
-		WhitespaceTokenizer.o \
+		stopwords/englishStopwordSet.o \
+		tokenizer/WhitespaceTokenizer.o \
+		gooseUtil.o \
+		stopwords/stopwords.o \
 	)
 
 MAIN_OBJ = $(addprefix ./src/, \

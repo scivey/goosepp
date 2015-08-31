@@ -2,10 +2,11 @@
 #include <string>
 #include <vector>
 
-#include "stopwords.h"
+#include "englishStopwordSet.h"
 
 namespace scivey {
 namespace goosepp {
+namespace stopwords {
 
 const std::set<std::string> stopwordSet = {
     "a's",
@@ -556,9 +557,10 @@ const std::set<std::string> stopwordSet = {
     "criticized"
 };
 
-bool isStopword(const std::string &word) {
+bool isEnglishStopword(const std::string &word) {
     return stopwordSet.find(word) != stopwordSet.end();
 }
 
+} // stopwords
 } // goosepp
 } // scivey
