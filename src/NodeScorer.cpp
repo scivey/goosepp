@@ -12,55 +12,22 @@
 #include "stopwords/StopwordCounter.h"
 
 #include "NodeScorer.h"
-
+#include "BoostChecker.h"
 
 namespace scivey {
 namespace goosepp {
 
 using stopwords::StopwordCounter;
 
-class BoostChecker {
-    NodeTextCleaner cleaner_;
-    StopwordCounter stopwordCounter_;
-    size_t minStopwords_;
-    size_t maxStepsAway_;
-public:
-    BoostChecker(NodeTextCleaner cleaner, StopwordCounter counter, size_t minStopwords = 5, size_t maxStepsAway = 3)
-        : stopwordCounter_(counter),
-          cleaner_(cleaner),
-          minStopwords_(minStopwords),
-          maxStepsAway_(maxStepsAway) {}
+NodeScorer::NodeScorer(shared_ptr<StopwordCounter> counter,
+                        shared_ptr<TextNodeCollector> collector,
+                        shared_ptr<BoostCheckerFactory> checkerFactory,
+                        const GumboNode *root)
+    : stopwordCounter_(counter),
+      collector_(collector),
+      checkerFactory_(checkerFactory),
+      root_(root) {
 
-    bool isOkToBoost(const GumboNode *node) {
-        bool isOk = false;
-        size_t stepsAway = 0;
-        size_t minimumStopwordCount = 5;
-        size_t maxStepsAway = 3;
-
-        auto visitor = [&isOk, &stepsAway, this](const GumboNode* sibling, function<void()> escape) {
-            if (sibling->type == GUMBO_NODE_ELEMENT && sibling->v.element.tag == GUMBO_TAG_P) {
-                if (stepsAway >= this->maxStepsAway_) {
-                    VLOG(4) << "next paragraph is too far away; boosting";
-                    isOk = false;
-                    escape();
-                    return;
-                }
-                auto siblingText = this->cleaner_.getText(sibling);
-                if (this->stopwordCounter_.countStopwords(siblingText) > this->minStopwords_) {
-                    VLOG(4) << "sibling has a lot of stopwords; boosting";
-                    isOk = true;
-                    escape();
-                    return;
-                }
-                stepsAway++;
-            }
-        };
-        walkSiblings(node, visitor);
-        return isOk;
-    }
-};
-
-NodeScorer::NodeScorer(const GumboNode *root): root_(root){
     process();
 }
 
@@ -107,9 +74,7 @@ int NodeScorer::getTopNodeScore() {
 }
 
 bool NodeScorer::isOkToBoost(const GumboNode *node) {
-    StopwordCounter counter = stopwords::getEnglishStopwordCounter();
-    NodeTextCleaner cleaner;
-    BoostChecker checker(cleaner, counter);
+    auto checker = checkerFactory_->build();
     return checker.isOkToBoost(node);
 }
 
@@ -124,9 +89,9 @@ void NodeScorer::process() {
         return;
     }
 
-    StopwordCounter counter = stopwords::getEnglishStopwordCounter();
+    // StopwordCounter counter = stopwords::getEnglishStopwordCounter();
 
-    auto nodesWithText = collector_.collect(root_);
+    auto nodesWithText = collector_->collect(root_);
     double bottomNodesForNegativeScore = 0.25 * nodesWithText.size();
     double startingBoost = 1.0;
     size_t i = 0;
@@ -149,7 +114,7 @@ void NodeScorer::process() {
         }
         VLOG(4) << "boostScore [" << i << "] : " << boostScore;
         auto nodeText = cleanText(node);
-        int upscore = counter.countStopwords(nodeText) + ((int) boostScore);
+        int upscore = stopwordCounter_->countStopwords(nodeText) + ((int) boostScore);
         updateTextyNode(node, upscore);
         i++;
     }

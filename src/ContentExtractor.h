@@ -2,6 +2,7 @@
 
 #include <gumbo.h>
 #include <string>
+#include <memory>
 
 #include "NodeScorer.h"
 #include "NodeTextCleaner.h"
@@ -12,12 +13,15 @@ namespace goosepp {
 
 class ContentExtractor {
 protected:
-    NodeScorer scorer_;
-    NodeTextCleaner cleaner_;
-    stopwords::StopwordCounter stopwordCounter_;
+    std::shared_ptr<NodeScorer> scorer_;
+    std::shared_ptr<NodeTextCleaner> cleaner_;
+    std::shared_ptr<stopwords::StopwordCounter> stopwordCounter_;
     const GumboNode *root_;
 public:
-    ContentExtractor(const GumboNode *root);
+    ContentExtractor(std::shared_ptr<NodeScorer>,
+        std::shared_ptr<NodeTextCleaner>,
+        std::shared_ptr<stopwords::StopwordCounter>,
+        const GumboNode *root);
     std::string extract();
 };
 
