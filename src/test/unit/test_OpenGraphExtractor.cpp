@@ -32,8 +32,8 @@ TEST(OpenGraphExtractor, shouldNotBeWrong) {
 
     auto gumboed = gumbo_parse(document.c_str());
     shared_ptr<GumboOutput> docPtr(gumboed, NonDeleter<GumboOutput>());
-    OpenGraphExtractor extractor(docPtr);
-    auto result = extractor.extract();
+    OpenGraphExtractor extractor;
+    auto result = extractor.extract(docPtr);
     EXPECT_EQ(2, result.size());
     EXPECT_TRUE(result.find("something") != result.end());
     EXPECT_TRUE(result.find("otherthing") != result.end());
@@ -60,8 +60,8 @@ TEST(OpenGraphExtractor, noOpenGraphTags) {
 
     auto gumboed = gumbo_parse(document.c_str());
     shared_ptr<GumboOutput> docPtr(gumboed, NonDeleter<GumboOutput>());
-    OpenGraphExtractor extractor(docPtr);
-    auto result = extractor.extract();
+    OpenGraphExtractor extractor;
+    auto result = extractor.extract(docPtr);
     EXPECT_EQ(0, result.size());
 }
 
@@ -80,7 +80,7 @@ TEST(OpenGraphExtractor, noMetaTagsAtAll) {
 
     auto gumboed = gumbo_parse(document.c_str());
     shared_ptr<GumboOutput> docPtr(gumboed, NonDeleter<GumboOutput>());
-    OpenGraphExtractor extractor(docPtr);
-    auto result = extractor.extract();
+    OpenGraphExtractor extractor;
+    auto result = extractor.extract(docPtr);
     EXPECT_EQ(0, result.size());
 }

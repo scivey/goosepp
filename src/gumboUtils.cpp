@@ -72,19 +72,27 @@ void visitDepthFirstWithEscape(const GumboNode *node, function<void (const Gumbo
     visitDepthFirstWithEscapeAndFilter(node, callback, alwaysVisit);
 }
 
-const GumboNode* findFirstTag(GumboTag tag, const GumboNode *root) {
+const GumboNode* findFirst(const GumboNode *root, function<bool (const GumboNode*)> predicate) {
     const GumboNode* result = nullptr;
-    auto visitor = [&result, tag](const GumboNode *node, function<void()> escape) {
-        if (node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == tag) {
+    auto visitor = [&result, &predicate](const GumboNode *node, function<void()> escape) {
+        if (predicate(node)) {
             result = node;
             escape();
         }
     };
     visitDepthFirstWithEscape(root, visitor);
     if (result == nullptr) {
-        LOG(INFO) << "findFirstTag returned nullptr!";
+        LOG(INFO) << "findFirst returned nullptr!";
     }
     return result;
+}
+
+const GumboNode* findFirstTag(GumboTag tag, const GumboNode *root) {
+    const GumboNode* result = nullptr;
+    auto pred = [tag](const GumboNode *node) {
+        return node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == tag;
+    };
+    return findFirst(root, pred);
 }
 
 string findTitle(const GumboNode *root) {

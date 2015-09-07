@@ -13,6 +13,8 @@ LIB_OBJ = $(addprefix ./src/, \
 		TextNodeCollector.o \
 		NodeScorer.o \
 		gumboUtils.o \
+		TitleExtractor.o \
+		PublishDateExtractor.o \
 		stopwords/englishStopwordSet.o \
 		tokenizer/WhitespaceTokenizer.o \
 		gooseUtil.o \
@@ -25,6 +27,8 @@ UNIT_TEST_OBJ = $(addprefix ./src/test/unit/, \
 		test_BoostChecker.o \
 		test_WhitespaceTokenizer.o \
 		test_OpenGraphExtractor.o \
+		test_TitleExtractor.o \
+		test_PublishDateExtractor.o \
 	)
 
 ./src/main.cpp: $(LIB_OBJ)

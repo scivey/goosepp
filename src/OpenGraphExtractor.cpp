@@ -11,12 +11,10 @@ using namespace std;
 namespace scivey {
 namespace goosepp {
 
-OpenGraphExtractor::OpenGraphExtractor(shared_ptr<GumboOutput> doc):
-    gumboDoc_(doc){}
 
-map<string, string> OpenGraphExtractor::extract() {
+map<string, string> OpenGraphExtractor::extract(shared_ptr<GumboOutput> doc) {
     map<string, string> results;
-    auto metaTags = collectTag(GUMBO_TAG_META, gumboDoc_.get()->root);
+    auto metaTags = collectTag(GUMBO_TAG_META, doc.get()->root);
     for (auto &elem: metaTags) {
         auto metaName = gumbo_get_attribute(&elem->v.element.attributes, "property");
         if (metaName != nullptr) {
