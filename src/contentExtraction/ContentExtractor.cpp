@@ -10,6 +10,7 @@ using namespace std;
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 ContentExtractor::ContentExtractor(std::shared_ptr<NodeScorerIf> scorer,
                                     std::shared_ptr<NodeTextCleanerIf> cleaner,
@@ -55,6 +56,6 @@ string ContentExtractor::extract() {
     return bodyStream.str();
 }
 
-
+} // contentExtraction
 } // goosepp
 } // scivey

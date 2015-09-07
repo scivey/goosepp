@@ -1,17 +1,19 @@
 #include <string>
 #include <memory>
 #include <gumbo.h>
-#include "ContentExtractor.h"
+#include "contentExtraction/ContentExtractor.h"
 #include "stopwords/stopwords.h"
-#include "NodeTextCleaner.h"
-#include "BoostChecker.h"
-#include "TextNodeCollector.h"
-#include "NodeScorer.h"
+#include "contentExtraction/NodeTextCleaner.h"
+#include "contentExtraction/BoostChecker.h"
+#include "contentExtraction/TextNodeCollector.h"
+#include "contentExtraction/NodeScorer.h"
 
 using namespace std;
 
 namespace scivey {
 namespace goosepp {
+
+using namespace scivey::goosepp::contentExtraction;
 
 string extractBody(const string &htmlText) {
     auto gumboed = gumbo_parse(htmlText.c_str());

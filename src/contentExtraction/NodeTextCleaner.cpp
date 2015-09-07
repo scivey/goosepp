@@ -12,6 +12,7 @@ using namespace std;
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
     namespace detail {
 
@@ -94,5 +95,6 @@ string NodeTextCleaner::getText(const GumboNode *node) {
     return result;
 }
 
+} // contentExtraction
 } // goosepp
 } // scivey

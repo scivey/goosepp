@@ -10,6 +10,7 @@
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 class ContentExtractorIf {
 public:
@@ -31,5 +32,6 @@ public:
 };
 
 
+} // contentExtraction
 } // goosepp
 } // scivey

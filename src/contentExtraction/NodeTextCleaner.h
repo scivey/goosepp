@@ -9,6 +9,7 @@
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 
 namespace detail {
@@ -34,5 +35,6 @@ public:
     std::string getText(const GumboNode *node) override;
 };
 
+} // contentExtraction
 } // goosepp
 } // scivey

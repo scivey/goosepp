@@ -7,6 +7,7 @@
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 class TextNodeCollectorIf {
 public:
@@ -25,6 +26,6 @@ public:
     std::vector<const GumboNode*> collect(const GumboNode *root) override;
 };
 
+} // contentExtraction
 } // goosepp
 } // scivey
-

@@ -14,6 +14,7 @@
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 using stopwords::StopwordCounterIf;
 
@@ -53,6 +54,7 @@ public:
     BoostChecker build() override;
 };
 
+} // contentExtraction
 } // goosepp
 } // scivey
 

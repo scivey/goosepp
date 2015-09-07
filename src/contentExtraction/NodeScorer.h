@@ -10,9 +10,10 @@
 #include "TextNodeCollector.h"
 #include "BoostChecker.h"
 #include "stopwords/StopwordCounter.h"
+
 namespace scivey {
 namespace goosepp {
-
+namespace contentExtraction {
 
 class NodeScorerIf {
 public:
@@ -51,5 +52,6 @@ public:
     int getTopNodeScore() override;
 };
 
+} // contentExtraction
 } // goosepp
 } // scivey

@@ -8,10 +8,11 @@ COMP = $(CXX) $(CXXFLAGS)
 LIB_OBJ = $(addprefix ./src/, \
 		fileUtils.o \
 		goosepp.o \
-		ContentExtractor.o \
-		NodeTextCleaner.o \
-		TextNodeCollector.o \
-		NodeScorer.o \
+		contentExtraction/ContentExtractor.o \
+		contentExtraction/NodeTextCleaner.o \
+		contentExtraction/TextNodeCollector.o \
+		contentExtraction/NodeScorer.o \
+		contentExtraction/BoostChecker.o \
 		gumboUtils.o \
 		TitleExtractor.o \
 		PublishDateExtractor.o \
@@ -19,7 +20,6 @@ LIB_OBJ = $(addprefix ./src/, \
 		tokenizer/WhitespaceTokenizer.o \
 		gooseUtil.o \
 		stopwords/stopwords.o \
-		BoostChecker.o \
 		OpenGraphExtractor.o \
 	)
 

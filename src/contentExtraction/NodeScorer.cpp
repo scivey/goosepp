@@ -16,6 +16,7 @@
 
 namespace scivey {
 namespace goosepp {
+namespace contentExtraction {
 
 using stopwords::StopwordCounter;
 
@@ -134,5 +135,6 @@ void NodeScorer::process() {
     topNodeScore_ = topNodeScore;
 }
 
+} // contentExtraction
 } // goosepp
 } // scivey
