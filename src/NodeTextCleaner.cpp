@@ -85,6 +85,11 @@ string NodeTextCleaner::getText(const GumboNode *node) {
             }
             result = output.str();
         }
+        if (node->v.element.tag == GUMBO_TAG_P && result != "") {
+            result += "\n\n";
+        } else if (node->v.element.tag == GUMBO_TAG_BR) {
+            result += "\n";
+        }
     }
     return result;
 }
