@@ -8,6 +8,7 @@ using namespace std;
 
 namespace scivey {
 namespace goosepp {
+namespace util {
 
 using tokenizer::WhitespaceTokenizer;
 
@@ -34,5 +35,7 @@ bool isHighLinkDensity(const GumboNode *node) {
     return isHighLinkDensity(node, cleanText(node));
 }
 
+
+} // util
 } // goosepp
 } // scivey

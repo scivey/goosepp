@@ -14,7 +14,7 @@ using namespace std;
 
 namespace scivey {
 namespace goosepp {
-
+namespace util {
 
 void visitDepthFirstWithEscapeAndFilter(
         const GumboNode *node,
@@ -189,5 +189,7 @@ void walkSiblings(const GumboNode *node, function<void (const GumboNode*, functi
 }
 
 
+
+} // util
 } // goosepp
 } // scivey

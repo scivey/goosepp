@@ -47,7 +47,7 @@ clean-tests:
 	rm -f src/test/unit/*.o unit_test_runner src/test/functional/*.o func_test_runner
 
 clean: clean-tests
-	rm -f runner src/*.o src/stopwords/*.o src/tokenizer/*.o
+	rm -f runner src/*.o src/stopwords/*.o src/tokenizer/*.o src/contentExtraction/*.o src/util/*.o
 
 .PHONY: run clean clean-tests
 

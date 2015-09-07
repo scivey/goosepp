@@ -6,6 +6,7 @@
 #include <vector>
 namespace scivey {
 namespace goosepp {
+namespace util {
 
 bool isHighLinkDensity(const GumboNode *node, const std::string &nodeText);
 bool isHighLinkDensity(const GumboNode *node);
@@ -26,5 +27,7 @@ std::string joinVec(const std::string &joinWith, const std::vector<T> &vec) {
     return oss.str();
 }
 
+
+} // util
 } // goosepp
 } // scivey

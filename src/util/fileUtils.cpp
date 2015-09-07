@@ -8,6 +8,7 @@ using namespace std;
 
 namespace scivey {
 namespace goosepp {
+namespace util {
 
 string readFile(const char *filePath) {
     ostringstream oss;
@@ -23,5 +24,6 @@ string readFile(const string &filePath) {
     return readFile(filePath.c_str());
 }
 
+} // util
 } // goosepp
 } // scivey
