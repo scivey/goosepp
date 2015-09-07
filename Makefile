@@ -18,11 +18,13 @@ LIB_OBJ = $(addprefix ./src/, \
 		gooseUtil.o \
 		stopwords/stopwords.o \
 		BoostChecker.o \
+		OpenGraphExtractor.o \
 	)
 
 UNIT_TEST_OBJ = $(addprefix ./src/test/unit/, \
 		test_BoostChecker.o \
 		test_WhitespaceTokenizer.o \
+		test_OpenGraphExtractor.o \
 	)
 
 ./src/main.cpp: $(LIB_OBJ)
@@ -53,19 +55,30 @@ UNIT_RUNNER_SRC = ./src/test/unit/runner.cpp
 unit_test_runner: $(UNIT_RUNNER_SRC) $(UNIT_TEST_OBJ) $(LIB_OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $(UNIT_TEST_OBJ) $(UNIT_RUNNER_SRC) $(LIB_OBJ) $(TEST_LINK)
 
-FUNC_TEST_SRC = ./src/test/functional/runner.cpp
-func_test_runner: $(FUNC_TEST_SRC) $(LIB_OBJ)
-	$(CXX) $(CXXFLAGS) -o $@ $(FUNC_TEST_SRC) $(LIB_OBJ) $(LINK)
-
 test-unit: unit_test_runner
 	./unit_test_runner
 
-test-func: func_test_runner
-	./func_test_runner
-
-test: unit_test_runner func_test_runner
+test: unit_test_runner
 	./unit_test_runner
-	./func_test_runner
 
-.PHONY: test-unit test-func test
+.PHONY: test-unit
+
+FUNC_TEST_NAMES = testContentExtraction
+
+FUNC_TESTS = $(addprefix ./build/func/, $(FUNC_TEST_NAMES))
+
+$(FUNC_TESTS): build/func
+
+./build/func/%: ./src/test/functional/%.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LIB_OBJ) $(LINK)
+
+test-func: $(FUNC_TESTS)
+	./build/func/testContentExtraction
+
+
+build/func:
+	mkdir -p build/func
+
+build:
+	mkdir -p build
 

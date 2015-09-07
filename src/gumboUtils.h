@@ -4,10 +4,7 @@
 #include <set>
 #include <string>
 #include <vector>
-
-
 #include <cassert>
-
 #include <gumbo.h>
 
 
