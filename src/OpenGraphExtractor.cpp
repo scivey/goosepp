@@ -4,7 +4,7 @@
 #include <vector>
 #include <gumbo.h>
 #include "OpenGraphExtractor.h"
-#include "gumboUtils.h"
+#include "util/gumboUtils.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ namespace goosepp {
 
 map<string, string> OpenGraphExtractor::extract(shared_ptr<GumboOutput> doc) {
     map<string, string> results;
-    auto metaTags = collectTag(GUMBO_TAG_META, doc.get()->root);
+    auto metaTags = util::collectTag(GUMBO_TAG_META, doc.get()->root);
     for (auto &elem: metaTags) {
         auto metaName = gumbo_get_attribute(&elem->v.element.attributes, "property");
         if (metaName != nullptr) {

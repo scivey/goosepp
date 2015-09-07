@@ -9,9 +9,9 @@
 #include <gumbo.h>
 
 #include "OpenGraphExtractor.h"
-#include "gumboUtils.h"
+#include "util/gumboUtils.h"
 #include "tokenizer/Tokenizer.h"
-#include "gooseUtil.h"
+#include "util/gooseUtil.h"
 
 using namespace std;
 
@@ -36,7 +36,7 @@ string sloppilyExtractDomainFromUrl(const std::string &url) {
     return "";
 }
 
-TitleExtractor::TitleExtractor(shared_ptr<OpenGraphExtractor> extractor, shared_ptr<tokenizer::Tokenizer> tokenizer):
+TitleExtractor::TitleExtractor(shared_ptr<OpenGraphExtractorIf> extractor, shared_ptr<tokenizer::Tokenizer> tokenizer):
     openGraphExtractor_(extractor), tokenizer_(tokenizer) {}
 
 
@@ -68,14 +68,14 @@ string TitleExtractor::clean(const string &input, const string &url, shared_ptr<
     if (titleSplitters.find(parts.back()) != titleSplitters.end()) {
         parts.pop_back();
     }
-    return joinVec(" ", parts);
+    return util::joinVec(" ", parts);
 }
 
 string TitleExtractor::extractInitial(shared_ptr<GumboOutput> doc, const map<string, string> &ogKeys) {
     if (ogKeys.find("title") != ogKeys.end()) {
         return ogKeys.at("title");
     }
-    const GumboNode *metaHeadline = findFirst(doc.get()->root, [](const GumboNode *node) {
+    const GumboNode *metaHeadline = util::findFirst(doc.get()->root, [](const GumboNode *node) {
         if (node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == GUMBO_TAG_META) {
             auto name = gumbo_get_attribute(&node->v.element.attributes, "name");
             if (name != nullptr) {
@@ -93,7 +93,7 @@ string TitleExtractor::extractInitial(shared_ptr<GumboOutput> doc, const map<str
             return string {content->value};
         }
     }
-    return findTitle(doc.get()->root);
+    return util::findTitle(doc.get()->root);
 }
 
 string TitleExtractor::extract(shared_ptr<GumboOutput> doc, string url) {

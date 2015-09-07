@@ -27,6 +27,12 @@ std::string joinVec(const std::string &joinWith, const std::vector<T> &vec) {
     return oss.str();
 }
 
+// used to make phony shared_ptr<T> instances that don't call `free()`
+template<typename T>
+struct NonDeleter {
+    void operator()(T* t) const {}
+};
+
 
 } // util
 } // goosepp

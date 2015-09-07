@@ -3,9 +3,8 @@
 #include <vector>
 
 #include <gumbo.h>
-#include <glog/logging.h>
 
-#include "gumboUtils.h"
+#include "util/gumboUtils.h"
 #include "TextNodeCollector.h"
 #include "NodeTextCleaner.h"
 #include "stopwords/stopwords.h"
@@ -113,8 +112,7 @@ void NodeScorer::process() {
                 }
             }
         }
-        VLOG(4) << "boostScore [" << i << "] : " << boostScore;
-        auto nodeText = cleanText(node);
+        auto nodeText = util::cleanText(node);
         int upscore = stopwordCounter_->countStopwords(nodeText) + ((int) boostScore);
         updateTextyNode(node, upscore);
         i++;

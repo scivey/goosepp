@@ -6,7 +6,6 @@
 #include <vector>
 
 #include <gumbo.h>
-#include <glog/logging.h>
 
 #include "gumboUtils.h"
 
@@ -81,9 +80,6 @@ const GumboNode* findFirst(const GumboNode *root, function<bool (const GumboNode
         }
     };
     visitDepthFirstWithEscape(root, visitor);
-    if (result == nullptr) {
-        LOG(INFO) << "findFirst returned nullptr!";
-    }
     return result;
 }
 

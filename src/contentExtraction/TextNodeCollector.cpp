@@ -2,8 +2,8 @@
 #include <vector>
 #include <gumbo.h>
 #include "TextNodeCollector.h"
-#include "gumboUtils.h"
-#include "gooseUtil.h"
+#include "util/gumboUtils.h"
+#include "util/gooseUtil.h"
 #include "stopwords/stopwords.h"
 
 namespace scivey {
@@ -15,9 +15,9 @@ TextNodeCollector::TextNodeCollector(){};
 vector<const GumboNode*> TextNodeCollector::collect(const GumboNode *root) {
     vector<const GumboNode*> nodesWithText;
     auto stopwordCounter = stopwords::getEnglishStopwordCounter();
-    for (auto nodePtr: collectTags(topNodeTags_, root)) {
-        string nodeText = cleanText(nodePtr);
-        if (!isHighLinkDensity(nodePtr, nodeText) && stopwordCounter.countStopwords(nodeText) > 2) {
+    for (auto nodePtr: util::collectTags(topNodeTags_, root)) {
+        string nodeText = util::cleanText(nodePtr);
+        if (!util::isHighLinkDensity(nodePtr, nodeText) && stopwordCounter.countStopwords(nodeText) > 2) {
             nodesWithText.push_back(nodePtr);
         }
     }

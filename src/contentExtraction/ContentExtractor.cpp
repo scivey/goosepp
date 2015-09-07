@@ -4,7 +4,7 @@
 
 #include "ContentExtractor.h"
 #include "stopwords/stopwords.h"
-#include "gooseUtil.h"
+#include "util/gooseUtil.h"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ string ContentExtractor::extract() {
         for (size_t i = 0; i < children->length; ++i) {
             auto node = static_cast<const GumboNode*>(children->data[i]);
             if (node->type == GUMBO_NODE_ELEMENT && node->v.element.tag != GUMBO_TAG_P) {
-                if (isHighLinkDensity(node)) {
+                if (util::isHighLinkDensity(node)) {
                     continue;
                 }
                 if (node->v.element.tag != GUMBO_TAG_TD) {

@@ -6,7 +6,7 @@
 #include <gumbo.h>
 #include <glog/logging.h>
 
-#include "gumboUtils.h"
+#include "util/gumboUtils.h"
 #include "TextNodeCollector.h"
 #include "NodeTextCleaner.h"
 #include "stopwords/stopwords.h"

@@ -9,14 +9,14 @@
 
 #include "testHelpers.h"
 
-#include "BoostChecker.h"
-#include "NodeTextCleaner.h"
+#include "contentExtraction/BoostChecker.h"
+#include "contentExtraction/NodeTextCleaner.h"
 #include "stopwords/StopwordCounter.h"
 
 using namespace std;
-using scivey::goosepp::BoostChecker;
+using scivey::goosepp::contentExtraction::BoostChecker;
 using scivey::goosepp::stopwords::StopwordCounterIf;
-using scivey::goosepp::NodeTextCleanerIf;
+using scivey::goosepp::contentExtraction::NodeTextCleanerIf;
 using ::testing::Return;
 using ::testing::_;
 

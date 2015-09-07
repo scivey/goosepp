@@ -5,10 +5,10 @@
 #include <glog/logging.h>
 
 #include "goosepp.h"
-#include "fileUtils.h"
+#include "util/fileUtils.h"
 
 using namespace std;
-using scivey::goosepp::readFile;
+using scivey::goosepp::util::readFile;
 using scivey::goosepp::extractBody;
 
 class StartAndEndTest {
@@ -55,7 +55,7 @@ void test_Jezebel1() {
 
 int main(int argc, char **argv) {
     vector<StartAndEndTest> tests = {
-        StartAndEndTest("resources/additional_html/jezebel1.txt", "Leave it to Taylor", "every one of us on stage with her.")
+        StartAndEndTest("resources/additional_html/jezebel1.txt", "Leave it to Taylor", "every one of us on stage with her.\n\n")
     };
     for (auto &test: tests) {
         test.run();
