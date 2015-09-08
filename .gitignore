@@ -7,4 +7,6 @@ tmp
 runner
 unit_test_runner
 func_test_runner
+mem_test_runner
+benchmark_runner
 build
