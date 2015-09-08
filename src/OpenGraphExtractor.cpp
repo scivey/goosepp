@@ -3,8 +3,8 @@
 #include <memory>
 #include <vector>
 #include <gumbo.h>
-#include "OpenGraphExtractor.h"
-#include "util/gumboUtils.h"
+#include <goosepp/OpenGraphExtractor.h>
+#include <goosepp/util/gumboUtils.h>
 
 using namespace std;
 

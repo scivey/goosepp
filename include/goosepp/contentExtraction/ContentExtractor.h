@@ -4,9 +4,9 @@
 #include <string>
 #include <memory>
 
-#include "NodeScorer.h"
-#include "NodeTextCleaner.h"
-#include "stopwords/StopwordCounter.h"
+#include <goosepp/contentExtraction/NodeScorer.h>
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
+#include <goosepp/stopwords/StopwordCounter.h>
 
 namespace scivey {
 namespace goosepp {

@@ -7,9 +7,9 @@
 
 #include <gumbo.h>
 
-#include "TextNodeCollector.h"
-#include "BoostChecker.h"
-#include "stopwords/StopwordCounter.h"
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/contentExtraction/BoostChecker.h>
+#include <goosepp/stopwords/StopwordCounter.h>
 
 namespace scivey {
 namespace goosepp {

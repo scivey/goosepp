@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "StopwordCounter.h"
+#include <goosepp/stopwords/StopwordCounter.h>
 
 namespace scivey {
 namespace goosepp {

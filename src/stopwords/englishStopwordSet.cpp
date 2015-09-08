@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 
-#include "englishStopwordSet.h"
+#include <goosepp/stopwords/englishStopwordSet.h>
 
 namespace scivey {
 namespace goosepp {

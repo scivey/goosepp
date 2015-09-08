@@ -4,14 +4,13 @@
 
 #include <gumbo.h>
 
-#include "util/gumboUtils.h"
-#include "TextNodeCollector.h"
-#include "NodeTextCleaner.h"
-#include "stopwords/stopwords.h"
-#include "stopwords/StopwordCounter.h"
-
-#include "NodeScorer.h"
-#include "BoostChecker.h"
+#include <goosepp/util/gumboUtils.h>
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
+#include <goosepp/stopwords/stopwords.h>
+#include <goosepp/stopwords/StopwordCounter.h>
+#include <goosepp/contentExtraction/NodeScorer.h>
+#include <goosepp/contentExtraction/BoostChecker.h>
 
 namespace scivey {
 namespace goosepp {

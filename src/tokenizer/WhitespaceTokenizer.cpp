@@ -4,7 +4,7 @@
 
 #include <mitie/conll_tokenizer.h>
 
-#include "WhitespaceTokenizer.h"
+#include <goosepp/tokenizer/WhitespaceTokenizer.h>
 
 using namespace std;
 

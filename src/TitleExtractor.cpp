@@ -1,4 +1,4 @@
-#include "TitleExtractor.h"
+#include <goosepp/TitleExtractor.h>
 
 #include <string>
 #include <vector>
@@ -8,10 +8,10 @@
 
 #include <gumbo.h>
 
-#include "OpenGraphExtractor.h"
-#include "util/gumboUtils.h"
-#include "tokenizer/Tokenizer.h"
-#include "util/gooseUtil.h"
+#include <goosepp/OpenGraphExtractor.h>
+#include <goosepp/util/gumboUtils.h>
+#include <goosepp/tokenizer/Tokenizer.h>
+#include <goosepp/util/gooseUtil.h>
 
 using namespace std;
 

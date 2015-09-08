@@ -41,6 +41,20 @@ int main() {
 
 ```
 
+## Dependencies
+There are two:
+* [MITIE](https://github.com/mit-nlp/MITIE) for tokenization of element text
+* [gumbo-parser](https://github.com/google/gumbo-parser) for HTML parsing, DOM, etc.
+
+## Building
+Make sure you have the dependencies, then:
+```bash
+mkdir build
+cd build
+cmake ../
+sudo make install
+```
+
 ## Tests
 There are lower-level unit tests, functional tests of content extraction, and a set of memory leak checks.
 ``` bash
@@ -48,12 +62,6 @@ make test-unit
 make test-functional
 make test-mem
 ```
-
-## Dependencies
-There are two:
-* [MITIE](https://github.com/mit-nlp/MITIE) for tokenization of element text
-* [gumbo-parser](https://github.com/google/gumbo-parser) for HTML parsing, DOM, etc.
-
 
 ## Benchmarks
 These numbers aren't all that scientific, as the current benchmark is just run repeatedly against a [single example](resources/additional_html/jezebel1.txt).

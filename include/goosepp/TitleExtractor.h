@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "OpenGraphExtractor.h"
-#include "tokenizer/Tokenizer.h"
+#include <goosepp/OpenGraphExtractor.h>
+#include <goosepp/tokenizer/Tokenizer.h>
 
 namespace scivey {
 namespace goosepp {

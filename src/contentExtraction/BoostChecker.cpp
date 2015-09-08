@@ -5,12 +5,12 @@
 
 #include <gumbo.h>
 
-#include "BoostChecker.h"
-#include "util/gumboUtils.h"
-#include "TextNodeCollector.h"
-#include "NodeTextCleaner.h"
-#include "stopwords/stopwords.h"
-#include "stopwords/StopwordCounter.h"
+#include <goosepp/contentExtraction/BoostChecker.h>
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/util/gumboUtils.h>
+#include <goosepp/stopwords/stopwords.h>
+#include <goosepp/stopwords/StopwordCounter.h>
 
 namespace scivey {
 namespace goosepp {

@@ -1,13 +1,13 @@
 #include <string>
 #include <memory>
 #include <gumbo.h>
-#include "contentExtraction/ContentExtractor.h"
-#include "stopwords/stopwords.h"
-#include "contentExtraction/NodeTextCleaner.h"
-#include "contentExtraction/BoostChecker.h"
-#include "contentExtraction/TextNodeCollector.h"
-#include "contentExtraction/NodeScorer.h"
-#include "GooseExtractor.h"
+#include <goosepp/contentExtraction/ContentExtractor.h>
+#include <goosepp/stopwords/stopwords.h>
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
+#include <goosepp/contentExtraction/BoostChecker.h>
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/contentExtraction/NodeScorer.h>
+#include <goosepp/GooseExtractor.h>
 using namespace std;
 
 namespace scivey {

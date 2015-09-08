@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 
-#include "ContentExtractor.h"
-#include "stopwords/stopwords.h"
-#include "util/gooseUtil.h"
+#include <goosepp/contentExtraction/ContentExtractor.h>
+#include <goosepp/stopwords/stopwords.h>
+#include <goosepp/util/gooseUtil.h>
 
 using namespace std;
 

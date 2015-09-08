@@ -1,10 +1,10 @@
 #include <set>
 #include <vector>
 #include <gumbo.h>
-#include "TextNodeCollector.h"
-#include "util/gumboUtils.h"
-#include "util/gooseUtil.h"
-#include "stopwords/stopwords.h"
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/util/gumboUtils.h>
+#include <goosepp/util/gooseUtil.h>
+#include <goosepp/stopwords/stopwords.h>
 
 namespace scivey {
 namespace goosepp {

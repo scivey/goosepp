@@ -1,20 +1,21 @@
 #include <string>
-#include "GooseExtractor.h"
 
 #include <gumbo.h>
-#include "contentExtraction/ContentExtractor.h"
-#include "stopwords/stopwords.h"
-#include "contentExtraction/NodeTextCleaner.h"
-#include "contentExtraction/BoostChecker.h"
-#include "contentExtraction/TextNodeCollector.h"
-#include "contentExtraction/NodeScorer.h"
-#include "tokenizer/Tokenizer.h"
-#include "tokenizer/WhitespaceTokenizer.h"
-#include "TitleExtractor.h"
-#include "OpenGraphExtractor.h"
-#include "PublishDateExtractor.h"
-#include "util/LazyGumboParser.h"
-#include "util/gooseUtil.h"
+
+#include <goosepp/GooseExtractor.h>
+#include <goosepp/contentExtraction/ContentExtractor.h>
+#include <goosepp/stopwords/stopwords.h>
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
+#include <goosepp/contentExtraction/BoostChecker.h>
+#include <goosepp/contentExtraction/TextNodeCollector.h>
+#include <goosepp/contentExtraction/NodeScorer.h>
+#include <goosepp/tokenizer/Tokenizer.h>
+#include <goosepp/tokenizer/WhitespaceTokenizer.h>
+#include <goosepp/TitleExtractor.h>
+#include <goosepp/OpenGraphExtractor.h>
+#include <goosepp/PublishDateExtractor.h>
+#include <goosepp/util/LazyGumboParser.h>
+#include <goosepp/util/gooseUtil.h>
 
 using namespace std;
 namespace scivey {

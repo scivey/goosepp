@@ -6,7 +6,7 @@
 
 #include <gumbo.h>
 
-#include "NodeTextCleaner.h"
+#include <goosepp/contentExtraction/NodeTextCleaner.h>
 
 using namespace std;
 

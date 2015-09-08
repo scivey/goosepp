@@ -3,8 +3,8 @@
 #include <string>
 #include <memory>
 
-#include "PublishDateExtractor.h"
-#include "util/gumboUtils.h"
+#include <goosepp/PublishDateExtractor.h>
+#include <goosepp/util/gumboUtils.h>
 
 using namespace std;
 

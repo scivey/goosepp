@@ -1,7 +1,7 @@
 #include <memory>
-#include "StopwordCounter.h"
-#include "englishStopwordSet.h"
-#include "stopwords.h"
+#include <goosepp/stopwords/StopwordCounter.h>
+#include <goosepp/stopwords/englishStopwordSet.h>
+#include <goosepp/stopwords/stopwords.h>
 
 using namespace std;
 

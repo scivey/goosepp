@@ -2,7 +2,7 @@
 
 #include <string>
 #include <gumbo.h>
-#include "GooseExtractor.h"
+#include <goosepp/GooseExtractor.h>
 
 namespace scivey {
 namespace goosepp {

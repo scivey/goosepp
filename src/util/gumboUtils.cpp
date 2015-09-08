@@ -7,7 +7,7 @@
 
 #include <gumbo.h>
 
-#include "gumboUtils.h"
+#include <goosepp/util/gumboUtils.h>
 
 using namespace std;
 

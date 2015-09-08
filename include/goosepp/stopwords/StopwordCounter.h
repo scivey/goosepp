@@ -3,7 +3,7 @@
 #include <vector>
 #include <functional>
 
-#include "tokenizer/WhitespaceTokenizer.h"
+#include <goosepp/tokenizer/WhitespaceTokenizer.h>
 
 using namespace std;
 

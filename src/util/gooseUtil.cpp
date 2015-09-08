@@ -1,8 +1,8 @@
 #include <string>
 #include <gumbo.h>
-#include "gooseUtil.h"
-#include "gumboUtils.h"
-#include "tokenizer/WhitespaceTokenizer.h"
+#include <goosepp/util/gooseUtil.h>
+#include <goosepp/util/gumboUtils.h>
+#include <goosepp/tokenizer/WhitespaceTokenizer.h>
 
 using namespace std;
 

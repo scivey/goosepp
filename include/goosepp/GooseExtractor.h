@@ -1,7 +1,7 @@
 #include <string>
 #include <memory>
-#include "util/LazyGumboParser.h"
-#include "util/gooseUtil.h"
+#include <goosepp/util/LazyGumboParser.h>
+#include <goosepp/util/gooseUtil.h>
 
 namespace scivey {
 namespace goosepp {
