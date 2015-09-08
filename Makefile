@@ -25,3 +25,7 @@ bench: test-build
 	cd build2 && make benchmark_runner
 	./build2/src/test/benchmark_runner
 
+deps:
+	cd external/gtest-1.7.0-min && make libgtest_main.a
+	cd external/gmock-1.7.0 && ./configure && make src/gmock-all.o
+

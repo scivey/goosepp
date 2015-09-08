@@ -49,6 +49,7 @@ There are two:
 ## Building
 Make sure you have the dependencies, then:
 ```bash
+make deps
 mkdir build
 cd build
 cmake ../
