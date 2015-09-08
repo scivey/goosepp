@@ -22,7 +22,7 @@ set(SOURCE_FILES
     "util/gumboUtils.cpp"
 )
 
-add_library(goosepp ${SOURCE_FILES})
+add_library(goosepp SHARED ${SOURCE_FILES})
 
 set_target_properties(goosepp PROPERTIES
   OUTPUT_NAME "goosepp"
