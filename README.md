@@ -56,7 +56,7 @@ There are two:
 
 
 ## Benchmarks
-These numbers aren't all that scientific, as the current benchmark is just run repeatedly against a [single example.](resources/additional_html/jezebel1.txt).
+These numbers aren't all that scientific, as the current benchmark is just run repeatedly against a [single example](resources/additional_html/jezebel1.txt).
 
 ```
     ./benchmark_runner
