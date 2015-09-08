@@ -1,5 +1,5 @@
 CXX=clang++-3.5
-INC=-I./src -I./external/gtest-1.7.0-min/include -I./external/gmock-1.7.0/include -O2
+INC=-I./src -I./include -I./external/gtest-1.7.0-min/include -I./external/gmock-1.7.0/include -O2
 
 CXXFLAGS=-stdlib=libstdc++ --std=c++14 $(INC)
 LINK=-lgumbo -latomic -pthread

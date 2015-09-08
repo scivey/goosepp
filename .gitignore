@@ -10,3 +10,5 @@ func_test_runner
 mem_test_runner
 benchmark_runner
 build
+build2
+
