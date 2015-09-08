@@ -22,8 +22,8 @@ BoostChecker::BoostChecker(shared_ptr<NodeTextCleanerIf> cleaner,
                             shared_ptr<StopwordCounterIf> counter,
                             size_t minStopwords,
                             size_t maxStepsAway)
-    : stopwordCounter_(counter),
-      cleaner_(cleaner),
+    : cleaner_(cleaner),
+      stopwordCounter_(counter),
       minStopwords_(minStopwords),
       maxStepsAway_(maxStepsAway) {}
 
@@ -56,8 +56,8 @@ BoostCheckerFactory::BoostCheckerFactory(shared_ptr<NodeTextCleanerIf> cleaner,
                             shared_ptr<StopwordCounterIf> counter,
                             size_t minStopwords,
                             size_t maxStepsAway)
-    : stopwordCounter_(counter),
-      cleaner_(cleaner),
+    : cleaner_(cleaner),
+      stopwordCounter_(counter),
       minStopwords_(minStopwords),
       maxStepsAway_(maxStepsAway) {}
 

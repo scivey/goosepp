@@ -19,7 +19,7 @@ class TitleExtractor: public TitleExtractorIf {
 protected:
     std::shared_ptr<OpenGraphExtractorIf> openGraphExtractor_;
     std::shared_ptr<tokenizer::Tokenizer> tokenizer_;
-    std::string clean(const std::string&, const std::string&, std::shared_ptr<GumboOutput>, const std::map<std::string, std::string>&);
+    std::string clean(const std::string&, const std::string&, const std::map<std::string, std::string>&);
     std::string extractInitial(std::shared_ptr<GumboOutput> doc, const std::map<std::string, std::string> &ogKeys);
 public:
     TitleExtractor(std::shared_ptr<OpenGraphExtractorIf>, std::shared_ptr<tokenizer::Tokenizer>);

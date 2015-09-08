@@ -10,7 +10,7 @@ namespace scivey {
 namespace goosepp {
 namespace contentExtraction {
 
-TextNodeCollector::TextNodeCollector(){};
+TextNodeCollector::TextNodeCollector(){}
 
 vector<const GumboNode*> TextNodeCollector::collect(const GumboNode *root) {
     vector<const GumboNode*> nodesWithText;

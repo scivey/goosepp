@@ -40,10 +40,9 @@ TitleExtractor::TitleExtractor(shared_ptr<OpenGraphExtractorIf> extractor, share
     openGraphExtractor_(extractor), tokenizer_(tokenizer) {}
 
 
-string TitleExtractor::clean(const string &input, const string &url, shared_ptr<GumboOutput> doc, const map<string, string> &ogKeys) {
+string TitleExtractor::clean(const string &input, const string &url, const map<string, string> &ogKeys) {
     string title = input;
 
-    // TODO: get domain from url and try to match it
     if (ogKeys.find("site_name") != ogKeys.end()) {
         string ogTitle = ogKeys.at("site_name");
         size_t startIndex;
@@ -99,7 +98,7 @@ string TitleExtractor::extractInitial(shared_ptr<GumboOutput> doc, const map<str
 string TitleExtractor::extract(shared_ptr<GumboOutput> doc, string url) {
     auto ogKeys = openGraphExtractor_->extract(doc);
     auto initial = extractInitial(doc, ogKeys);
-    return clean(initial, url, doc, ogKeys);
+    return clean(initial, url, ogKeys);
 }
 
 } // goosepp

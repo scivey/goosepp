@@ -25,10 +25,10 @@ public:
 
 class NodeScorer: public NodeScorerIf {
 protected:
-    const GumboNode *root_;
+    std::shared_ptr<stopwords::StopwordCounterIf> stopwordCounter_;
     std::shared_ptr<TextNodeCollectorIf> collector_;
     std::shared_ptr<BoostCheckerFactoryIf> checkerFactory_;
-    std::shared_ptr<stopwords::StopwordCounterIf> stopwordCounter_;
+    const GumboNode *root_;
 
     std::map<const GumboNode*, int> nodeScores_;
     std::map<const GumboNode*, size_t> nodeCounts_;

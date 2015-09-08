@@ -2,6 +2,26 @@
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${PROJECT_SOURCE_DIR}/include/goosepp)
 
+# Turn compiler warnings up to 11
+add_cxx_compiler_flag(-Wall)
+add_cxx_compiler_flag(-Wextra)
+add_cxx_compiler_flag(-Wshadow)
+add_cxx_compiler_flag(-Werror RELEASE)
+add_cxx_compiler_flag(-pedantic)
+add_cxx_compiler_flag(-pedantic-errors)
+add_cxx_compiler_flag(-Wshorten-64-to-32)
+add_cxx_compiler_flag(-Wfloat-equal)
+add_cxx_compiler_flag(-Wzero-as-null-pointer-constant)
+add_cxx_compiler_flag(-fstrict-aliasing)
+if (HAVE_CXX_FLAG_FSTRICT_ALIASING)
+  add_cxx_compiler_flag(-Wstrict-aliasing)
+endif()
+add_cxx_compiler_flag(-Wthread-safety)
+if (HAVE_WTHREAD_SAFETY)
+  add_definitions(-DHAVE_WTHREAD_SAFETY)
+  cxx_feature_check(THREAD_SAFETY_ATTRIBUTES)
+endif()
+
 # Define the source files
 set(SOURCE_FILES
     "goosepp.cpp"
@@ -50,57 +70,3 @@ install(
   DESTINATION include
 )
 
-include_directories(${PROJECT_SOURCE_DIR}/external/gtest-1.7.0-min/include)
-include_directories(${PROJECT_SOURCE_DIR}/external/gmock-1.7.0/include)
-include_directories(${PROJECT_SOURCE_DIR}/src/test/unit)
-set(UNIT_SOURCE_FILES
-  "test/unit/test_BoostChecker.cpp"
-  "test/unit/test_OpenGraphExtractor.cpp"
-  "test/unit/test_PublishDateExtractor.cpp"
-  "test/unit/test_TitleExtractor.cpp"
-  "test/unit/test_WhitespaceTokenizer.cpp"
-  "test/unit/runner.cpp"
-)
-
-add_executable(
-  unit_test_runner
-  ${UNIT_SOURCE_FILES}
-)
-
-set(TEST_LINK
-  goosepp gumbo glog pthread
-)
-
-target_link_libraries(
-  unit_test_runner
-  "${PROJECT_SOURCE_DIR}/external/gmock-1.7.0/src/gmock-all.o"
-  "${PROJECT_SOURCE_DIR}/external/gtest-1.7.0-min/libgtest_main.a"
-  ${TEST_LINK}
-)
-
-add_executable(
-  ftest_content_extraction
-  "test/functional/testContentExtraction.cpp"
-)
-
-target_link_libraries(
-  ftest_content_extraction ${TEST_LINK}
-)
-
-add_executable(
-  memory_leak_test
-  "test/memory/runner.cpp"
-)
-
-target_link_libraries(
-  memory_leak_test ${TEST_LINK}
-)
-
-add_executable(
-  benchmark_runner
-  "test/benchmark/runner.cpp"
-)
-
-target_link_libraries(
-  benchmark_runner goosepp gumbo benchmark pthread
-)

@@ -56,15 +56,16 @@ void visitDepthFirstWithEscapeAndFilter(
 }
 
 bool alwaysVisit(const GumboNode *node) {
+    ((void) node);
     return true;
 }
 
-void visitDepthFirst(const GumboNode *node, function<void (const GumboNode*)> callback) {
+void visitDepthFirst(const GumboNode *targetNode, function<void (const GumboNode*)> callback) {
     auto escapedCallback = [callback](const GumboNode* node, function<void()> escape) {
-        ((void) escape); // ignore unused parameter
+        ((void) escape);
         callback(node);
     };
-    visitDepthFirstWithEscapeAndFilter(node, escapedCallback, alwaysVisit);
+    visitDepthFirstWithEscapeAndFilter(targetNode, escapedCallback, alwaysVisit);
 }
 
 void visitDepthFirstWithEscape(const GumboNode *node, function<void (const GumboNode*, function<void ()>)> callback) {
@@ -84,7 +85,6 @@ const GumboNode* findFirst(const GumboNode *root, function<bool (const GumboNode
 }
 
 const GumboNode* findFirstTag(GumboTag tag, const GumboNode *root) {
-    const GumboNode* result = nullptr;
     auto pred = [tag](const GumboNode *node) {
         return node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == tag;
     };

@@ -1,28 +1,27 @@
 clean:
 	rm -rf build build2
 
-.PHONY: clean test test-unit test-functional test-mem bench build
+.PHONY: clean test test-unit test-functional test-mem bench test-build
 
-test-unit:
-	mkdir -p build
-	cd build && cmake ../ && make unit_test_runner
-	./build/src/unit_test_runner
+test-unit: test-build
+	cd build2 && make unit_test_runner
+	./build2/src/test/unit_test_runner
 
 test: test-unit test-functional test-mem
 
-build:
-	mkdir -p build
-	cd build && cmake ../
+test-build:
+	mkdir -p build2
+	cd build2 && cmake -DGOOSEPP_ENABLE_TESTING=ON ../
 
-test-functional: build
-	cd build && make ftest_content_extraction
-	./build/src/ftest_content_extraction
+test-functional: test-build
+	cd build2 && make ftest_content_extraction
+	./build2/src/test/ftest_content_extraction
 
-test-mem: build
-	cd build && make memory_leak_test
-	valgrind --tool=memcheck --show-leak-kinds=definite,possible,indirect ./build/src/memory_leak_test
+test-mem: test-build
+	cd build2 && make memory_leak_test
+	valgrind --tool=memcheck --show-leak-kinds=definite,possible,indirect ./build2/src/test/memory_leak_test
 
-bench: build
-	cd build && make benchmark_runner
-	./build/src/benchmark_runner
+bench: test-build
+	cd build2 && make benchmark_runner
+	./build2/src/test/benchmark_runner
 
