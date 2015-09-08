@@ -3,7 +3,7 @@
 A c++ port of [python-goose](https://github.com/grangier/python-goose), which is itself a port of the [origin Scala Goose project](https://github.com/GravityLabs/goose).
 
 ## Case study: Jezebel extraction
-`goosepp` takes raw HTML like [this article about Taylor Swift](master/resources/additional_html/jezebel1.txt) and extracts the most "contenty" text.  It tries to remove navigation, headers, footers, ads, etc., and outputs the cleaned text of the main content like this:
+`goosepp` takes raw HTML like [this article about Taylor Swift](resources/additional_html/jezebel1.txt) and extracts the most "contenty" text.  It tries to remove navigation, headers, footers, ads, etc., and outputs the cleaned text of the main content like this:
 
 ```
 Leave it to Taylor to tidy up a  squabble  quickly and, if possible, in the most maximalist way. Mere days after a social media-based tiff, misunderstanding, whatever you want to call it, Taylor invited Avril to the stage at her San Diego show. They performed “Complicated,” Taylor beamed and squeezed Avril — everything was beautiful again.
