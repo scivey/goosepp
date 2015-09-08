@@ -41,6 +41,14 @@ int main() {
 
 ```
 
+## Tests
+There are lower-level unit tests, functional tests of content extraction, and a set of memory leak checks.
+``` bash
+make test-unit
+make test-functional
+make test-mem
+```
+
 ## Dependencies
 There are two:
 * [MITIE](https://github.com/mit-nlp/MITIE) for tokenization of element text

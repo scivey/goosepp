@@ -77,7 +77,7 @@ $(FUNC_TESTS): build/func
 ./build/func/%: ./src/test/functional/%.cpp
 	$(CXX) $(CXXFLAGS) -o $@ $< $(LIB_OBJ) $(LINK)
 
-test-func: $(FUNC_TESTS)
+test-functional: $(FUNC_TESTS)
 	./build/func/testContentExtraction
 
 mem_test_runner: ./src/test/memory/runner.cpp
@@ -92,7 +92,7 @@ benchmark_runner: ./src/test/benchmark/runner.cpp
 benchmark: benchmark_runner
 	./benchmark_runner
 
-.PHONY: test-mem benchmark
+.PHONY: test-mem benchmark test-functional
 
 build/func:
 	mkdir -p build/func
