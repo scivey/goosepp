@@ -1,6 +1,7 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <cmath>
 
 #include <gumbo.h>
 
